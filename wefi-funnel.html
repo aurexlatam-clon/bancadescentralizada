@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WeFi / DeOne — El primer Deobank del mundo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0A0A;
+    --bg-alt:#121212;
+    --white:#F5F5F3;
+    --white-dim:#B8B8B4;
+    --lime:#C6F135;
+    --lime-dim:#8FAE2A;
+    --line:#262622;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--white);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:480px;margin:0 auto;padding:0 24px;}
+  section{padding:64px 0;border-bottom:1px solid var(--line);}
+  section:last-child{border-bottom:none;}
+
+  h1,h2,h3{font-family:'DM Serif Display',serif;font-weight:400;line-height:1.15;}
+  .eyebrow{
+    font-family:'Bebas Neue',sans-serif;
+    letter-spacing:0.08em;
+    color:var(--lime);
+    font-size:14px;
+    margin-bottom:12px;
+    display:block;
+  }
+  h1{font-size:36px;margin-bottom:16px;}
+  h2{font-size:28px;margin-bottom:16px;}
+  h3{font-size:19px;margin-bottom:8px;color:var(--white);}
+  p{font-size:16px;color:var(--white-dim);margin-bottom:14px;}
+  .lime{color:var(--lime);font-family:'DM Serif Display',serif;}
+  strong{color:var(--white);font-weight:600;}
+  .big-lime{font-family:'DM Serif Display',serif;color:var(--lime);}
+
+  /* HERO */
+  #hero{padding-top:56px;text-align:left;}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.05em;color:var(--white);margin-bottom:48px;}
+  .logo span{color:var(--lime);}
+  #hero h1{font-size:34px;}
+  #hero .sub{font-size:18px;color:var(--white);font-family:'DM Serif Display',serif;font-style:italic;margin:18px 0 20px;}
+
+  /* PROBLEM */
+  .problem-list{list-style:none;}
+  .problem-list li{
+    padding:16px 0 16px 0;
+    border-top:1px solid var(--line);
+    font-size:15px;
+    color:var(--white-dim);
+  }
+  .problem-list li:last-child{border-bottom:1px solid var(--line);}
+  .problem-list b{color:var(--white);}
+
+  /* COMPARISON TABLE */
+  .compare{border:1px solid var(--line);border-radius:2px;overflow:hidden;margin:20px 0;}
+  .compare-row{display:grid;grid-template-columns:1fr 1.6fr;border-bottom:1px solid var(--line);}
+  .compare-row:last-child{border-bottom:none;}
+  .compare-row.head{background:var(--bg-alt);}
+  .compare-cell{padding:14px 16px;font-size:14px;}
+  .compare-row.head .compare-cell{font-family:'Bebas Neue',sans-serif;letter-spacing:0.04em;color:var(--lime);font-size:13px;}
+  .compare-cell.label{color:var(--white);font-weight:600;border-right:1px solid var(--line);}
+  .compare-cell.desc{color:var(--white-dim);}
+  .compare-row.highlight{background:rgba(198,241,53,0.06);}
+  .compare-row.highlight .compare-cell.label{color:var(--lime);}
+
+  /* PILLARS / GRID */
+  .pillar{padding:20px 0;border-top:1px solid var(--line);}
+  .pillar:last-child{padding-bottom:0;}
+  .pillar-num{font-family:'Bebas Neue',sans-serif;color:var(--lime);font-size:13px;letter-spacing:0.05em;margin-bottom:6px;display:block;}
+
+  /* STEPS */
+  .step{display:flex;gap:16px;margin-bottom:22px;align-items:flex-start;}
+  .step-dot{width:8px;height:8px;border-radius:50%;background:var(--lime);margin-top:8px;flex-shrink:0;}
+  .step p{margin-bottom:0;}
+
+  /* TEAM */
+  .team-member{padding:14px 0;border-top:1px solid var(--line);}
+  .team-member:last-child{border-bottom:1px solid var(--line);}
+  .team-name{font-size:17px;color:var(--white);font-weight:600;}
+  .team-role{font-size:13px;color:var(--lime);margin-bottom:2px;}
+  .team-bg{font-size:13px;color:var(--white-dim);}
+
+  /* QUOTE */
+  blockquote{
+    border-left:2px solid var(--lime);
+    padding-left:18px;
+    margin:20px 0;
+    font-family:'DM Serif Display',serif;
+    font-style:italic;
+    font-size:17px;
+    color:var(--white);
+  }
+
+  /* LEGAL CARDS */
+  .legal-card{border:1px solid var(--line);padding:18px;margin-bottom:14px;border-radius:2px;}
+  .legal-card h3{font-size:16px;font-family:'Inter',sans-serif;font-weight:700;}
+  .legal-card .tag{font-size:11px;color:var(--lime);letter-spacing:0.04em;font-family:'Bebas Neue',sans-serif;}
+  .legal-card p{font-size:14px;margin-bottom:0;margin-top:6px;}
+  .disclaimer{
+    background:var(--bg-alt);
+    border:1px solid var(--line);
+    padding:16px;
+    font-size:13px;
+    color:var(--white-dim);
+    margin-top:16px;
+  }
+  .disclaimer b{color:var(--lime);}
+
+  /* STATS */
+  .stat-row{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-top:1px solid var(--line);}
+  .stat-row:last-of-type{border-bottom:1px solid var(--line);}
+  .stat-num{font-family:'DM Serif Display',serif;color:var(--lime);font-size:22px;}
+  .stat-label{font-size:14px;color:var(--white-dim);text-align:right;max-width:60%;}
+
+  /* CTA */
+  #cta{text-align:center;}
+  #cta h2{font-size:30px;}
+  .btn{
+    display:inline-block;
+    background:var(--lime);
+    color:#0A0A0A;
+    font-family:'Bebas Neue',sans-serif;
+    letter-spacing:0.04em;
+    font-size:18px;
+    padding:16px 36px;
+    text-decoration:none;
+    margin-top:20px;
+    border-radius:2px;
+  }
+  .footnote{font-size:12px;color:var(--white-dim);margin-top:16px;}
+
+  /* IMÁGENES A SANGRE — difuminadas para fundirse con el fondo negro */
+  .bleed-img{
+    margin:0 -24px;
+    padding:0;
+    border-bottom:none;
+    position:relative;
+    line-height:0;
+  }
+  .bleed-img img{
+    width:100%;
+    display:block;
+    -webkit-mask-image:linear-gradient(to bottom, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+    mask-image:linear-gradient(to bottom, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+  }
+  .bleed-img.first img{
+    -webkit-mask-image:linear-gradient(to bottom, #000 0, #000 calc(100% - 64px), transparent 100%);
+    mask-image:linear-gradient(to bottom, #000 0, #000 calc(100% - 64px), transparent 100%);
+  }
+  .bleed-img + .bleed-img{
+    margin-top:-64px;
+  }
+  #visa img{
+    -webkit-mask-image:none;
+    mask-image:none;
+  }
+  #solucion img{
+    -webkit-mask-image:none;
+    mask-image:none;
+  }
+
+  /* BOTÓN OVALADO + MODAL */
+  .btn-pill{
+    display:inline-block;
+    background:transparent;
+    border:1.5px solid var(--lime);
+    color:var(--lime);
+    font-family:'Bebas Neue',sans-serif;
+    letter-spacing:0.05em;
+    font-size:18px;
+    padding:16px 40px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:background .25s ease, color .25s ease, box-shadow .25s ease;
+  }
+  .btn-pill:hover{
+    background:var(--lime);
+    color:#0A0A0A;
+    box-shadow:0 0 24px rgba(198,241,53,0.4);
+  }
+  .btn-pill-sm{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    flex:1;
+    min-width:0;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:12.5px;
+    letter-spacing:0.01em;
+    color:var(--lime);
+    background:rgba(198,241,53,0.06);
+    border:1px solid rgba(198,241,53,0.5);
+    padding:11px 14px;
+    border-radius:999px;
+    text-decoration:none;
+    white-space:nowrap;
+    transition:background .25s ease, border-color .25s ease, transform .2s ease;
+  }
+  .btn-pill-sm:hover{
+    background:rgba(198,241,53,0.14);
+    border-color:var(--lime);
+    transform:translateY(-1px);
+  }
+  .btn-pill-sm .arrow{
+    font-size:14px;
+    transition:transform .2s ease;
+  }
+  .btn-pill-sm:hover .arrow{
+    transform:translate(2px,-2px);
+  }
+  .link-row{
+    display:flex;
+    flex-wrap:nowrap;
+    justify-content:center;
+    gap:10px;
+  }
+  .transition-text{
+    font-family:'DM Serif Display',serif;
+    font-style:italic;
+    font-size:15px;
+    color:var(--white);
+    max-width:340px;
+    margin:20px auto 0;
+    line-height:1.5;
+  }
+  .btn-pill-solid{
+    display:block;
+    width:100%;
+    background:var(--lime);
+    color:#0A0A0A;
+    font-family:'Bebas Neue',sans-serif;
+    letter-spacing:0.03em;
+    font-size:14.5px;
+    line-height:1.35;
+    padding:18px 20px;
+    border:none;
+    border-radius:28px;
+    cursor:pointer;
+    transition:box-shadow .25s ease, transform .2s ease;
+  }
+  .btn-pill-solid:hover{
+    box-shadow:0 0 28px rgba(198,241,53,0.5);
+    transform:translateY(-1px);
+  }
+
+  /* TESTIMONIO */
+  .testimonial-row{
+    display:flex;
+    gap:18px;
+    align-items:center;
+    margin-top:20px;
+  }
+  .phone-frame{
+    flex:0 0 38%;
+    max-width:38%;
+    border:3px solid #1a1a1a;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 0 0 1px var(--line), 0 0 24px rgba(198,241,53,0.12);
+    background:#000;
+  }
+  .phone-frame img{
+    width:100%;
+    display:block;
+  }
+  .testimonial-text{
+    flex:1;
+    min-width:0;
+  }
+  .testimonial-text p{
+    font-size:14px;
+    margin-bottom:10px;
+  }
+  .testimonial-text p:last-child{
+    margin-bottom:0;
+  }
+  .modal-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.92);
+    z-index:1000;
+    align-items:center;
+    justify-content:center;
+    padding:32px 20px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal-content{
+    position:relative;
+    max-width:480px;
+    width:100%;
+    max-height:88vh;
+    overflow-y:auto;
+    border-radius:10px;
+    box-shadow:0 0 40px rgba(198,241,53,0.15);
+  }
+  .modal-content img{width:100%;display:block;border-radius:10px 10px 0 0;}
+  .modal-extra{
+    background:var(--bg-alt);
+    padding:20px;
+    border-radius:0 0 10px 10px;
+    text-align:center;
+  }
+  .modal-link{
+    display:inline-block;
+    color:var(--lime);
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:15px;
+    text-decoration:none;
+    border-bottom:1px solid var(--lime);
+    padding-bottom:2px;
+    margin-bottom:16px;
+  }
+  .video-placeholder{
+    width:100%;
+    aspect-ratio:16/9;
+    background:#000;
+    border:1px dashed var(--line);
+    border-radius:8px;
+    margin-top:4px;
+  }
+  .modal-close{
+    position:absolute;
+    top:-16px;
+    right:-16px;
+    background:var(--lime);
+    color:#0A0A0A;
+    border:none;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 2px 10px rgba(0,0,0,0.5);
+  }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 1. HERO -->
+  <section id="hero" class="bleed-img first">
+    <img src="hero.png" alt="WeFi Deobank — la nueva era financiera">
+  </section>
+
+  <!-- 2. PROBLEMA -->
+  <section id="problema" class="bleed-img">
+    <img src="puente.png" alt="El puente entre cripto y fiat está roto">
+  </section>
+
+  <!-- 3. QUÉ ES UN DEOBANK -->
+  <section id="deobank" class="bleed-img">
+    <img src="Deobank.png" alt="Banco, neobanco, exchange, Deobank — no son lo mismo">
+  </section>
+
+  <!-- 4. LA SOLUCIÓN -->
+  <section id="solucion" class="bleed-img" style="margin-top:-20px;">
+    <img src="ecosistema.png" alt="El Ecosistema DeOne Deobank — más que un banco, un movimiento">
+  </section>
+
+  <!-- 6. EQUIPO -->
+  <section id="equipo" style="text-align:center;padding:64px 0 24px;">
+    <button class="btn-pill" onclick="document.getElementById('equipo-modal').classList.add('open')">Conoce a nuestro equipo</button>
+  </section>
+
+  <!-- MODAL EQUIPO -->
+  <div id="equipo-modal" class="modal-overlay" onclick="if(event.target===this){this.classList.remove('open');}">
+    <div class="modal-content">
+      <button class="modal-close" onclick="document.getElementById('equipo-modal').classList.remove('open')">✕</button>
+      <img src="equipo.png" alt="El equipo de WeFi">
+      <div class="modal-extra">
+        <a href="https://reevecollins.com/" target="_blank" rel="noopener" class="modal-link">Conoce más sobre Reeve Collins →</a>
+        <!-- ESPACIO RESERVADO PARA VIDEO -->
+        <div class="video-placeholder">
+          <!-- Aquí va el embed o tag <video> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. ALIANZA VISA -->
+  <section id="visa" class="bleed-img" style="margin-top:-24px;">
+    <img src="visa.png" alt="Visa no se asocia con cualquiera — y eligió a WeFi">
+  </section>
+  <section id="visa-links" style="text-align:center;padding-top:20px;padding-bottom:24px;">
+    <div class="link-row">
+      <a href="https://www.coindesk.com/business/2026/04/28/visa-working-with-tether-og-reeve-collins-decentralized-banking-platform-wefi" target="_blank" rel="noopener" class="btn-pill-sm">Ver en CoinDesk <span class="arrow">↗</span></a>
+      <a href="https://www.forbes.com/sites/boazsobrado/2026/06/08/banking-services-will-become-a-utility-a-tether-co-founders-bet/" target="_blank" rel="noopener" class="btn-pill-sm">Ver en Forbes <span class="arrow">↗</span></a>
+    </div>
+    <p class="transition-text">Cuando Visa, CoinDesk y Forbes hablan de lo mismo al mismo tiempo, ya no es una opinión — es una señal.</p>
+  </section>
+
+  <!-- 8. LEGALIDAD -->
+  <!-- 8. REGULACIONES Y ENTIDADES -->
+  <section id="legal" style="text-align:center;padding:24px 0;">
+    <h2 style="font-size:22px;">La confianza se declara con hechos.</h2>
+    <p style="margin-bottom:24px;">Detrás de cada promesa hay licencias y registros en entidades verificables.</p>
+    <button class="btn-pill-solid" onclick="document.getElementById('regulaciones-modal').classList.add('open')">REGULACIONES, ENTIDADES OPERATIVAS, LICENCIAS Y RECONOCIMIENTOS</button>
+  </section>
+
+  <!-- MODAL REGULACIONES -->
+  <div id="regulaciones-modal" class="modal-overlay" onclick="if(event.target===this){this.classList.remove('open');}">
+    <div class="modal-content">
+      <button class="modal-close" onclick="document.getElementById('regulaciones-modal').classList.remove('open')">✕</button>
+      <img src="regulaciones.png" alt="Regulación real en múltiples jurisdicciones">
+      <img src="entidades.png" alt="Entidades operativas y proveedores tecnológicos" style="border-radius:0;">
+      <img src="reconocimientos.png" alt="Licencias y reconocimientos" style="border-radius:0 0 10px 10px;">
+    </div>
+  </div>
+
+  <section id="funciona-2" class="bleed-img" style="margin-top:8px;margin-bottom:-24px;">
+    <img src="funciona.png" alt="Cómo funciona — de cripto a gasto real, en segundos">
+  </section>
+
+  <!-- 9. LICENCIAS Y RECONOCIMIENTOS -->
+  <!-- 10. EXPERIENCIA PERSONAL -->
+  <section id="experiencia" style="padding:32px 0;">
+    <span class="eyebrow">Mi experiencia</span>
+    <h2>Ya lo probé — y funciona</h2>
+    <div class="testimonial-row">
+      <div class="phone-frame">
+        <img src="testimonio.jpeg" alt="Transacciones reales en la app de WeFi/DeOne">
+      </div>
+      <div class="testimonial-text">
+        <p>Descargué la app, la conecté a Google Pay, y realicé transacciones reales en México sin ningún problema.</p>
+        <p>Depósitos y pagos funcionando desde el primer momento.</p>
+        <p class="lime" style="font-family:'DM Serif Display',serif;font-style:italic;">No es una promesa a futuro: es una plataforma que ya funciona, hoy, en mis manos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. CIERRE + CTA -->
+  <section id="cta" style="padding-top:32px;">
+    <span class="eyebrow">El futuro ya llegó</span>
+    <h2>El futuro de la banca ya no es una teoría. Es DeOne.</h2>
+    <p>Un Deobank real. Respaldado por el cofundador de Tether, validado por Visa, regulado en múltiples jurisdicciones, y diseñado para devolverte el control de tu dinero.</p>
+    <a href="https://app.wefi.co/register?ref=c01kajqwzv" target="_blank" rel="noopener" class="btn">Activa tu tarjeta digital</a>
+  </section>
+
+</div>
+</body>
+</html>
